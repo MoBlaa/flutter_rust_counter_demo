@@ -2,6 +2,7 @@
 members = [
     "native/counter",
     "native/counter-ffi",
+    "native/counter-wasm",
 ]
 
 [profile.release]

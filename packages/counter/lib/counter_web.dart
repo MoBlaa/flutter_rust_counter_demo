@@ -4,6 +4,7 @@ import 'dart:async';
 // package as the core of your plugin.
 // ignore: avoid_web_libraries_in_flutter
 import 'dart:html' as html show window;
+import 'dart:js' as js;
 
 import 'package:flutter/services.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
@@ -28,6 +29,10 @@ class CounterWeb {
     switch (call.method) {
       case 'getPlatformVersion':
         return getPlatformVersion();
+      case 'increment':
+        Object? args = call.arguments ?? "0";
+        int val = int.parse(args.toString());
+        return increment(val);
       default:
         throw PlatformException(
           code: 'Unimplemented',
@@ -40,5 +45,11 @@ class CounterWeb {
   Future<String> getPlatformVersion() {
     final version = html.window.navigator.userAgent;
     return Future.value(version);
+  }
+
+  Future<int> increment(int val) {
+    final jsValue = js.context.callMethod('increment', [val]);
+    final value = int.parse(jsValue.toString());
+    return Future.value(value);
   }
 }

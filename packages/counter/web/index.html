@@ -1,0 +1,9 @@
+<head>
+    <script src="counter_wasm.js" defer></script>
+</head>
+<body>
+    <script type="module">
+        import init from "./counter_wasm.js";
+        init().then(() => console.log('Initialized wasm!'));
+    </script>
+</body>

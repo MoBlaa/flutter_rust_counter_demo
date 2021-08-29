@@ -1,6 +1,7 @@
 .PHONY: build install
 
 install:
+	curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
 	cargo install cargo-ndk
 	rustup target add \
         aarch64-linux-android \
