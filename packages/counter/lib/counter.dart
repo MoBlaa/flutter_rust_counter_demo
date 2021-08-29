@@ -29,7 +29,7 @@ class LibraryInitializationFailed implements Exception {
 }
 
 class Counter {
-  static late DynamicLibrary? _lib;
+  static DynamicLibrary? _lib;
 
   static const MethodChannel _channel =
       const MethodChannel('counter');

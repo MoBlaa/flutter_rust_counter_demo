@@ -1,4 +1,4 @@
-.PHONE: build install
+.PHONY: build install
 
 install:
 	cargo install cargo-ndk
@@ -9,4 +9,4 @@ install:
         i686-linux-android
 
 build:
-	cargo ndk -o ./target/jniLibs build --release
+	cargo ndk -o ./packages/counter/android/src/main/jniLibs build --release
