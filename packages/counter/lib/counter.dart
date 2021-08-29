@@ -41,11 +41,7 @@ class Counter {
 
   Counter() {
     if (_lib != null) return;
-    if (Platform.isLinux || Platform.isAndroid) {
-      _lib = load(basePath: '../../../target/debug/');
-    } else {
-      _lib = load();
-    }
+    _lib = load();
   }
 
   int increment(int val) {
