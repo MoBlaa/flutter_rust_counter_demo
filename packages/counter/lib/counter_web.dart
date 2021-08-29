@@ -6,7 +6,6 @@ import 'dart:async';
 import 'dart:html' as html show document, ScriptElement;
 import 'dart:js' as js;
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 
@@ -44,6 +43,8 @@ class CounterWeb {
         Object? args = call.arguments ?? "0";
         int val = int.parse(args.toString());
         return increment(val);
+      case 'count':
+        return count();
       default:
         throw PlatformException(
           code: 'Unimplemented',
@@ -54,6 +55,12 @@ class CounterWeb {
 
   Future<int> increment(int val) {
     final jsValue = js.context.callMethod('increment', [val]);
+    final value = int.parse(jsValue.toString());
+    return Future.value(value);
+  }
+
+  Future<int> count() {
+    final jsValue = js.context.callMethod('count');
     final value = int.parse(jsValue.toString());
     return Future.value(value);
   }

@@ -52,7 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
   Future<void> _incrementCounter() async {
-    final value = await widget.counter.increment(_counter);
+    final value = await widget.counter.count();
     setState(() {
       _counter = value;
     });

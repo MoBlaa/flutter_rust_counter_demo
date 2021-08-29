@@ -1,10 +1,12 @@
-import init, {increment as inc} from "./counter_wasm.js"
+import init, {increment as inc, count as cnt} from "./counter_wasm.js"
 
 function increment(val) {
     return inc(val);
 }
 
 window.increment = increment;
+
+window.count = () => cnt();
 
 init()
     .then(() => {

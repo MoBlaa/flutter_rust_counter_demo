@@ -8,4 +8,9 @@ class Counter implements CounterBase {
     final int result = await _channel.invokeMethod('increment', val);
     return result;
   }
+
+  Future<int> count() async {
+    final int result = await _channel.invokeMethod('count');
+    return result;
+  }
 }

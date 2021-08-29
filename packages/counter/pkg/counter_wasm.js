@@ -10,6 +10,14 @@ export function increment(val) {
     return ret;
 }
 
+/**
+* @returns {number}
+*/
+export function count() {
+    var ret = wasm.count();
+    return ret;
+}
+
 async function load(module, imports) {
     if (typeof Response === 'function' && module instanceof Response) {
         if (typeof WebAssembly.instantiateStreaming === 'function') {
