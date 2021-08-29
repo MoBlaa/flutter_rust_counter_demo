@@ -1,6 +1,7 @@
 [workspace]
 members = [
     "native/counter",
+    "native/counter-ffi",
 ]
 
 [profile.release]
