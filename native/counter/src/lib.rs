@@ -1,4 +1,4 @@
-pub fn increment(val: i64) -> i64 {
+pub fn increment(val: i32) -> i32 {
     val.wrapping_add(1)
 }
 

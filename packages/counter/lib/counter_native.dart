@@ -5,7 +5,7 @@ import 'dart:ffi';
 import 'package:counter/shared.dart';
 
 // For C/Rust
-typedef increment_func = Int64 Function(Int64 val);
+typedef increment_func = Int32 Function(Int32 val);
 // For Dart
 typedef Increment = int Function(int val);
 

@@ -3,11 +3,13 @@ import 'dart:async';
 // of your plugin as a separate package, instead of inlining it in the same
 // package as the core of your plugin.
 // ignore: avoid_web_libraries_in_flutter
-import 'dart:html' as html show window;
+import 'dart:html' as html show document, ScriptElement;
 import 'dart:js' as js;
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
+
 
 /// A web implementation of the Counter plugin.
 class CounterWeb {
@@ -22,13 +24,22 @@ class CounterWeb {
     channel.setMethodCallHandler(pluginInstance.handleMethodCall);
   }
 
+  CounterWeb() {
+    html.document.body!.append(html.ScriptElement()
+      ..src = "assets/packages/counter/pkg/counter_wasm.js"
+      ..type = "module"
+      ..defer = true);
+    html.document.body!.append(html.ScriptElement()
+      ..src = "assets/packages/counter/pkg/init_module.js"
+      ..type = "module"
+      ..defer = true);
+  }
+
   /// Handles method calls over the MethodChannel of this plugin.
   /// Note: Check the "federated" architecture for a new way of doing this:
   /// https://flutter.dev/go/federated-plugins
   Future<dynamic> handleMethodCall(MethodCall call) async {
     switch (call.method) {
-      case 'getPlatformVersion':
-        return getPlatformVersion();
       case 'increment':
         Object? args = call.arguments ?? "0";
         int val = int.parse(args.toString());
@@ -39,12 +50,6 @@ class CounterWeb {
           details: 'counter for web doesn\'t implement \'${call.method}\'',
         );
     }
-  }
-
-  /// Returns a [String] containing the version of the platform.
-  Future<String> getPlatformVersion() {
-    final version = html.window.navigator.userAgent;
-    return Future.value(version);
   }
 
   Future<int> increment(int val) {
