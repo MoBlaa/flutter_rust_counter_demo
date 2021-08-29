@@ -10,5 +10,5 @@ install:
         i686-linux-android
 
 build:
-	cargo ndk -o ./packages/counter/android/src/main/jniLibs build --release
+	cargo ndk -o ./packages/counter/android/src/main/jniLibs --manifest-path=native/counter-ffi/Cargo.toml build --release --package=counter-ffi
 	wasm-pack build --target web --out-dir=./../../packages/counter/pkg --no-typescript ./native/counter-wasm
