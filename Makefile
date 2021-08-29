@@ -11,3 +11,4 @@ install:
 
 build:
 	cargo ndk -o ./packages/counter/android/src/main/jniLibs build --release
+	cd native/counter-wasm && wasm-pack build --target web --out-dir=./../../packages/counter/web --no-typescript ./native/counter-wasm

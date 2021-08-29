@@ -17,7 +17,7 @@ void main() {
     channel.setMockMethodCallHandler(null);
   });
 
-  test('getPlatformVersion', () async {
-    expect(await Counter.platformVersion, '42');
+  test('increment', () async {
+    expect(await Counter().increment(1), '2');
   });
 }
