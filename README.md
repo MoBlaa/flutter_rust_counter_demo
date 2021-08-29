@@ -12,7 +12,7 @@ The Rust Counter library (`native/counter`) is either wrapped by:
 - the FFI Library (`native/counter-ffi`) exposing a API similiar to C for other languages to call or
 - the WASM Library (`native/counter-wasm`) creating a .wasm file (and a .js file to load it).
 
-These libraries are copied to their appropriate locations:
+These libraries compiled and copied (with [GNU Make](Makefile)) to their appropriate locations:
 
 - Android: [packages/counter/android/src/main/jniLibs](packages/counter/android/src/main/jniLibs)
 - Web: [packages/counter/pkg](packages/counter/pkg)
