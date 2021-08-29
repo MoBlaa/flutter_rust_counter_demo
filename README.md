@@ -1,6 +1,9 @@
 # flutter_rust_counter_demo
 
-A Demo Flutter app using rust on Android and Web.
+A Demo Flutter app using rust on Android and Web. Used Versions:
+
+- Flutter (Channel stable, 2.2.3, on Linux, locale de_DE.UTF-8)
+- Rust (cargo 1.54.0 (5ae8d74b3 2021-06-22))
 
 ## How it works
 
